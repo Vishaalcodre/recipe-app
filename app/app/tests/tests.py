@@ -1,10 +1,11 @@
 """Sample tests"""
 
-from django.test import SimpleTestCase
+from django.test import SimpleTestCase # noqa
 
 from app import calc
 
-def test_calc(SimpleTestCase):
+
+def test_calc(SimpleTestCase): # noqa
     """Test the Calc module"""
 
     def test_add(self):
@@ -13,4 +14,3 @@ def test_calc(SimpleTestCase):
         res = calc.add(2, 2)
 
         self.assertEqual(res, 4)
-        
