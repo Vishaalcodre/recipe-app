@@ -13,3 +13,4 @@ def test_calc(SimpleTestCase):
         res = calc.add(2, 2)
 
         self.assertEqual(res, 4)
+        
