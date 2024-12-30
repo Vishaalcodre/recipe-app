@@ -1,9 +1,10 @@
 """
 Tests for mmodels
 """
-
+from decimal import Decimal # Used to store one of the values of oor recipe object.
 from django.test import TestCase
 from django.contrib.auth import get_user_model
+from core import models
 
 class ModelTests(TestCase):
     """Test Models."""
@@ -48,3 +49,20 @@ class ModelTests(TestCase):
         )
         self.assertTrue(user.is_superuser)
         self.assertTrue(user.is_staff)
+
+    def test_create_recipe(self):
+        """Test creating a recipe is successful"""
+        user = get_user_model().objects.create_user(
+            "test@exaple.com",
+            "testpassword",
+        )
+
+        recipe = models.Recipe.objects.create(
+            user=user,
+            title="Sample recipe name",
+            time_minutes=5,
+            price=Decimal('5.99'),
+            description="Sample recipe description",
+        )
+
+        self.assertEqual(str(recipe), recipe.title)
